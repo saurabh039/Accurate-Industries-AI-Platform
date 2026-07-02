@@ -4,16 +4,30 @@ from app.database.connection import SessionLocal, get_db
 from app.models.inquiry import Inquiry
 from app.models.inquiry_items import InquiryItem
 from app.schemas.inquiry_schema import InquiryCreate
+from datetime import datetime
 from app.models.product import Product
 from fastapi import HTTPException
-
+from fastapi import BackgroundTasks
 
 router = APIRouter()
 
+from app.services.email_service import (
+    send_admin_email,
+    send_customer_email
+)
+
 # ================= SUBMIT INQUIRY =================
 @router.post("/submit-inquiry")
-def submit_inquiry(data: InquiryCreate, db: Session = Depends(get_db)):
-    
+def submit_inquiry(
+    data: InquiryCreate,
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db)
+):
+
+    # =====================
+    # CREATE INQUIRY
+    # =====================
+
     new_inquiry = Inquiry(
         name=data.name,
         email=data.email,
@@ -25,26 +39,64 @@ def submit_inquiry(data: InquiryCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_inquiry)
 
-    # Save selected products with quantity
+    products_for_email = []
+
+    # =====================
+    # SAVE PRODUCTS
+    # =====================
 
     for product in data.products:
 
         item = InquiryItem(
-
             inquiry_id=new_inquiry.id,
-
             product_id=product.product_id,
-
             quantity=product.quantity
-
         )
 
         db.add(item)
 
+        db_product = db.query(Product).filter(
+            Product.id == product.product_id
+        ).first()
+
+        if db_product:
+
+            products_for_email.append({
+                "name": db_product.name,
+                "quantity": product.quantity
+            })
+
     db.commit()
 
-    return {"message": "Inquiry submitted successfully 🚀"}
+    # =====================
+    # GENERATE INQUIRY CODE
+    # =====================
 
+    inquiry_code = (
+        f"AI-{datetime.now().strftime('%Y%m%d')}-{new_inquiry.id}"
+    )
+
+    # =====================
+    # SEND EMAILS
+    # =====================
+
+    background_tasks.add_task(
+        send_admin_email,
+        new_inquiry,
+        products_for_email,
+        inquiry_code
+    )
+
+    background_tasks.add_task(
+        send_customer_email,
+        new_inquiry,
+        products_for_email,
+        inquiry_code
+    )
+
+    return {
+        "message": "Inquiry submitted successfully 🚀"
+    }
 
 # ================= GET INQUIRIES =================
 @router.get("/inquiries")
