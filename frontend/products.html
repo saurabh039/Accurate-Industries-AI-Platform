@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/products.css">
+</head>
+
+<body>
+
+
+
+<nav class="navbar">
+
+    <div class="nav-logo">
+        <img src="assets/images/logo.png" alt="Logo">
+
+        <h2>
+            Accurate Industries
+        </h2>
+    </div>
+
+    <ul>
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="about.html">About</a>
+        </li>
+
+        <li>
+            <a href="services.html">Services</a>
+        </li>
+        <li>
+            <a href="products.html" class="active">
+                Products
+            </a>
+        </li>
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+    </ul>
+</nav>
+
+<section class="products-page">
+
+    <h1>Our Products</h1>
+
+    <!-- 🔍 SEARCH -->
+    <input type="text" id="search" placeholder="Search products...">
+
+    <!-- 🎯 CATEGORY -->
+    <div id="category-filter" class="filter-row"></div>
+
+    <!-- 🎯 SUBCATEGORY -->
+    <div id="subcategory-filter" class="filter-row"></div>
+
+    <!-- 🛒 PRODUCTS -->
+    <div id="products-container" class="products-grid"></div>
+
+    <!-- 📦 SELECTED PRODUCTS -->
+    <div class="selected-box">
+        <h3>Selected Products</h3>
+        <div id="selected-products"></div>
+    </div>
+
+</section>
+
+<div class="cart-float" onclick="window.location.href='contact.html'">
+    Inquiry <span id="cart-count" class="cart-count">0</span>
+</div>
+
+<!-- IMAGE MODAL -->
+<div id="imageModal" class="img-modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImg">
+</div>
+
+<!-- QUICK VIEW MODAL -->
+<!-- QUICK VIEW MODAL -->
+<div id="quickViewModal" class="quick-modal">
+
+    <div class="quick-content">
+
+        <span class="close-quick">&times;</span>
+        <!-- LEFT -->
+        <div class="quick-left">
+            <img id="quick-img">
+        </div>
+
+        <!-- RIGHT -->
+        <div class="quick-right">
+            <div>
+                <h2 id="quick-name"></h2>
+                <p id="quick-desc"></p>
+                <div id="quick-tags"></div>
+            </div>
+
+            <button id="quick-add">
+                Add to Inquiry
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

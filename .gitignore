@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual Environment
+backend/venv/
+
+# Environment Variables
+.env
+backend/.env
+
+# VS Code
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Uploads
+backend/uploads/
+
+# AI Models
+*.h5
+*.keras
+*.pt
+
+# Database Files
+*.db
+
+# Build Files
+dist/
+build/
+
+# Pytest
+.pytest_cache/
+
+# Mypy
+.mypy_cache/

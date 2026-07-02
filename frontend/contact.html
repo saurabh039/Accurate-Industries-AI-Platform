@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact - Accurate Industries</title>
+
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+
+    <div class="nav-logo">
+
+        <img src="assets/images/logo.png" alt="Logo">
+
+        <h2>Accurate Industries</h2>
+
+    </div>
+
+    <ul>
+
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="about.html">About</a></li>
+
+        <li><a href="services.html">Services</a></li>
+
+        <li><a href="products.html">Products</a></li>
+
+        <li><a href="contact.html" class="active">Contact</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="contact-hero">
+
+    <div class="hero-main">
+        <h1>
+            Let's Build
+            <span>Precision</span>
+            Together
+        </h1>
+    </div>
+
+    <div class="hero-description">
+        <p>
+            CNC machining, industrial manufacturing,
+            and reliable engineering solutions
+            tailored for your business.
+        </p>
+    </div>
+</section>
+
+<!-- ================= MAIN SECTION ================= -->
+<section class="contact-container">
+
+    <!-- FORM -->
+    <div class="contact-form">
+
+        <h2>Send Inquiry</h2>
+
+        <form id="inquiry-form">
+
+            <input type="text" id="name" placeholder="Your Name" required>
+
+            <input type="email" id="email" placeholder="Email Address" required>
+
+            <input type="text" id="phone" placeholder="Phone Number" required>
+
+            <textarea id="message" placeholder="Your Requirement"></textarea>
+
+            <button type="button" onclick="submitInquiry()">
+                Submit Inquiry
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- SELECTED PRODUCTS -->
+    <div class="selected-products-box">
+
+        <h2>Selected Products</h2>
+
+        <div id="selected-products">
+
+            <p>No products selected</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT INFO ================= -->
+<section class="contact-info">
+
+    <div class="info-grid">
+
+        <!-- PLANT 1 -->
+        <div class="info-card">
+
+            <h3>Plant - 1</h3>
+
+            <h4>STANDARD INDUSTRIES</h4>
+
+            <p>
+                L&T Phata, Shikrapur, Tal. Shirur,<br>
+                Dist. Pune - 412 208
+            </p>
+
+        </div>
+
+        <!-- PLANT 2 -->
+        <div class="info-card">
+
+            <h3>Plant - 2</h3>
+
+            <h4>ACCURATE INDUSTRIES</h4>
+
+            <p>
+                Plot No. E-63, Ranjangaon MIDC,<br>
+                Tal. Shirur, Dist. Pune - 412 220
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- CONTACT DETAILS -->
+    <div class="contact-details">
+
+        <h2>Contact Us</h2>
+
+        <p>📧 info@accurateinds.com</p>
+
+        <p>📞 +91 9890526297 / +91 9158247629</p>
+
+        <p>🌐 www.accurateinds.com</p>
+
+    </div>
+
+    <!-- MAP -->
+    <div class="map-container">
+
+        <iframe
+        src="https://maps.google.com/maps?q=Ranjangaon%20MIDC%20Pune&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        allowfullscreen=""
+        loading="lazy">
+        </iframe>
+
+    </div>
+
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="contact-cta">
+
+    <h2>Need Precision Manufacturing?</h2>
+
+    <p>
+        We deliver high-quality engineering solutions with reliability.
+    </p>
+
+    <a href="#" onclick="submitInquiry()" class="btn">
+        Request Quote
+    </a>
+
+</section>
+
+<!-- ================= FLOATING CART ================= -->
+<div class="floating-cart">
+
+    🛒 <span id="cart-count">0</span>
+
+</div>
+
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

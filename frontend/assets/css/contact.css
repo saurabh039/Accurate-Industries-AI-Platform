@@ -1,0 +1,860 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+:root{
+    --primary:#ff4d4d;
+    --primary-light:#ff7b7b;
+
+    --dark:#020617;
+    --dark-2:#08112b;
+
+    --text:#475569;
+    --light:#f8fafc;
+    --white:#ffffff;
+
+    --shadow-sm:0 10px 25px rgba(15,23,42,.06);
+    --shadow-md:0 12px 30px rgba(15,23,42,.08);
+    --shadow-lg:0 20px 40px rgba(15,23,42,.12);
+
+    --radius-lg:24px;
+    --radius-md:16px;
+
+    --transition:.35s ease;
+}
+
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.contact-hero{
+    position:relative;
+
+    min-height:420px;
+
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    align-items:center;
+    gap:60px;
+
+    padding:80px 8%;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        rgba(2,6,23,.72),
+        rgba(2,6,23,.78)
+    ),
+    url("../images/services/vmc-machining.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.contact-hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    top:-120px;
+    right:-140px;
+
+    background:rgba(255,75,75,.12);
+
+    border-radius:50%;
+
+    filter:blur(90px);
+}
+
+
+/* =========================================================
+   HERO BADGE
+========================================================= */
+
+.contact-badge{
+    position:absolute;
+
+    top:40px;
+    left:8%;
+}
+
+.contact-badge span{
+    padding:12px 26px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:var(--primary);
+
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:4px;
+
+    backdrop-filter:blur(10px);
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-main,
+.hero-description{
+    display:flex;
+    align-items:center;
+}
+
+.hero-main h1{
+    max-width:580px;
+
+    font-size:64px;
+    line-height:1;
+    letter-spacing:-2px;
+    font-weight:900;
+
+    color:var(--white);
+
+    text-shadow:0 8px 30px rgba(0,0,0,.45);
+}
+
+.hero-main h1 span{
+    color:var(--primary);
+
+    text-shadow:0 0 24px rgba(255,75,75,.35);
+}
+
+.hero-description{
+    justify-content:center;
+}
+
+.hero-description p{
+    max-width:520px;
+
+    font-size:21px;
+    line-height:1.7;
+
+    color:#dbe4f0;
+
+    text-shadow:0 2px 10px rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   MAIN CONTACT LAYOUT
+========================================================= */
+
+.contact-container{
+    display:grid;
+
+    grid-template-columns:1fr .85fr;
+
+    gap:28px;
+
+    padding:60px 6%;
+
+    background:#eef2f7;
+
+    align-items:start;
+}
+
+
+/* =========================================================
+   PREMIUM CARD BASE
+========================================================= */
+
+.contact-form,
+.selected-products-box,
+.info-card,
+.contact-details{
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.96),
+        rgba(248,250,252,.95)
+    );
+
+    border:1px solid rgba(255,255,255,.6);
+
+    border-radius:var(--radius-lg);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:var(--shadow-md);
+
+    transition:var(--transition);
+}
+
+.contact-form:hover,
+.selected-products-box:hover,
+.info-card:hover{
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow-lg);
+}
+
+/* COLOR GLOW */
+
+.contact-form::before,
+.selected-products-box::before{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at top left,
+        rgba(59,130,246,.10),
+        transparent 30%
+    ),
+
+    radial-gradient(
+        circle at bottom right,
+        rgba(255,75,75,.10),
+        transparent 30%
+    );
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+.contact-form{
+    padding:34px;
+}
+
+.contact-form h2{
+    margin-bottom:26px;
+
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:-2px;
+
+    color:var(--dark-2);
+}
+
+
+/* INPUTS */
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+
+    padding:16px 18px;
+
+    margin-bottom:16px;
+
+    border:none;
+    outline:none;
+
+    border-radius:var(--radius-md);
+
+    background:#f8fafc;
+
+    border:1px solid #dbe2ea;
+
+    font-size:15px;
+
+    transition:var(--transition);
+}
+
+.contact-form textarea{
+    min-height:140px;
+    resize:none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+    background:var(--white);
+
+    border-color:var(--primary);
+
+    box-shadow:
+    0 0 0 4px rgba(255,75,75,.08);
+}
+
+
+/* BUTTON */
+
+.contact-form button{
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:var(--radius-md);
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff3838,
+        #ff6b6b
+    );
+
+    color:var(--white);
+
+    font-size:16px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+    box-shadow:
+    0 14px 24px rgba(255,75,75,.2);
+}
+
+.contact-form button:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 18px 30px rgba(255,75,75,.28);
+}
+
+
+/* =========================================================
+   SELECTED PRODUCTS
+========================================================= */
+
+.selected-products-box{
+    height:700px;
+
+    display:flex;
+    flex-direction:column;
+
+    padding:32px;
+}
+
+.selected-products-box h2{
+    margin-bottom:24px;
+
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:-2px;
+
+    color:var(--dark-2);
+}
+
+#selected-products{
+    overflow-y:auto;
+
+    padding-right:8px;
+}
+
+
+/* SCROLLBAR */
+
+#selected-products::-webkit-scrollbar{
+    width:8px;
+}
+
+#selected-products::-webkit-scrollbar-thumb{
+    background:var(--primary);
+    border-radius:20px;
+}
+
+#selected-products::-webkit-scrollbar-track{
+    background:#f1f5f9;
+}
+
+
+/* PRODUCT ITEM */
+
+.selected-item{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px 16px;
+
+    border-radius:var(--radius-md);
+
+    background:#f8fafc;
+
+    margin-bottom:14px;
+
+    transition:var(--transition);
+}
+
+.selected-item:hover{
+    background:var(--white);
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-sm);
+}
+
+.selected-item button{
+    border:none;
+
+    padding:8px 14px;
+
+    border-radius:10px;
+
+    background:var(--primary);
+
+    color:var(--white);
+
+    font-size:13px;
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   CONTACT INFO
+========================================================= */
+
+.contact-info{
+    padding:70px 6%;
+
+    background:#f8fafc;
+}
+
+.info-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+
+    gap:28px;
+
+    margin-bottom:40px;
+}
+
+.info-card{
+    padding:34px;
+}
+
+.info-card::after{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:5px;
+
+    background:
+    linear-gradient(
+        90deg,
+        var(--primary),
+        var(--primary-light)
+    );
+}
+
+.info-card h3{
+    margin-bottom:14px;
+
+    color:var(--primary);
+
+    font-size:18px;
+    font-weight:800;
+}
+
+.info-card h4{
+    margin-bottom:22px;
+
+    color:var(--dark-2);
+
+    font-size:38px;
+    font-weight:900;
+
+    line-height:1.1;
+}
+
+.info-card p{
+    color:var(--text);
+
+    font-size:18px;
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   CONTACT DETAILS
+========================================================= */
+
+.contact-details{
+    text-align:center;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    padding:36px;
+
+    margin-bottom:35px;
+}
+
+.contact-details h2{
+    position:relative;
+
+    margin-bottom:28px;
+
+    font-size:52px;
+
+    color:var(--dark-2);
+}
+
+.contact-details h2::after{
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    bottom:-12px;
+
+    transform:translateX(-50%);
+
+    width:90px;
+    height:4px;
+
+    border-radius:20px;
+
+    background:var(--primary);
+}
+
+.contact-details p{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-bottom:18px;
+
+    color:var(--text);
+
+    font-size:20px;
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.map-container iframe{
+    width:100%;
+    height:400px;
+
+    border:none;
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-md);
+}
+
+
+/* =========================================================
+   CTA SECTION
+========================================================= */
+
+.contact-cta{
+    text-align:center;
+
+    padding:80px 6%;
+
+    background:
+    linear-gradient(
+        135deg,
+        #020617,
+        #111827
+    );
+
+    color:var(--white);
+}
+
+.contact-cta h2{
+    margin-bottom:16px;
+
+    font-size:48px;
+    font-weight:900;
+}
+
+.contact-cta p{
+    margin-bottom:28px;
+
+    color:#cbd5e1;
+
+    font-size:18px;
+}
+
+.contact-cta .btn{
+    display:inline-block;
+
+    padding:16px 34px;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff3838,
+        #ff6b6b
+    );
+
+    color:var(--white);
+
+    text-decoration:none;
+
+    font-weight:800;
+
+    transition:var(--transition);
+}
+
+.contact-cta .btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 16px 28px rgba(255,75,75,.28);
+}
+
+
+/* =========================================================
+   FLOATING CART
+========================================================= */
+
+.floating-cart{
+    position:fixed;
+
+    bottom:24px;
+    right:24px;
+
+    z-index:9999;
+
+    padding:16px 24px;
+
+    border-radius:60px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff3838,
+        #ff6b6b
+    );
+
+    color:var(--white);
+
+    font-size:18px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+    box-shadow:
+    0 16px 30px rgba(255,75,75,.25);
+}
+
+.floating-cart:hover{
+    transform:
+    translateY(-4px)
+    scale(1.03);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:992px){
+
+    .contact-hero{
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+        gap:30px;
+
+        padding:100px 8% 70px;
+    }
+
+    .hero-main h1{
+        font-size:54px;
+
+        margin:auto;
+    }
+
+    .hero-description{
+        justify-content:center;
+    }
+
+    .hero-description p{
+        margin:auto;
+    }
+
+    .contact-badge{
+        left:50%;
+
+        transform:translateX(-50%);
+    }
+
+    .contact-container{
+        grid-template-columns:1fr;
+    }
+
+    .selected-products-box{
+        height:auto;
+    }
+
+    #selected-products{
+        max-height:500px;
+    }
+}
+
+@media(max-width:768px){
+
+    .hero-main h1{
+        font-size:42px;
+    }
+
+    .hero-description p{
+        font-size:17px;
+    }
+
+    .contact-form h2,
+    .selected-products-box h2{
+        font-size:34px;
+    }
+
+    .contact-details h2{
+        font-size:40px;
+    }
+
+    .contact-cta h2{
+        font-size:36px;
+    }
+}
+
+/* =========================================
+   COLORED PREMIUM BLOCKS
+========================================= */
+
+.contact-form,
+.selected-products-box{
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.98),
+        rgba(248,250,252,.96)
+    );
+
+    border: 1px solid rgba(255,255,255,.7);
+
+    border-radius: 24px;
+
+    backdrop-filter: blur(14px);
+
+    box-shadow:
+    0 10px 30px rgba(15,23,42,.08),
+    0 25px 60px rgba(37,99,235,.08),
+    0 35px 70px rgba(255,75,75,.08);
+
+    transition: .4s ease;
+}
+
+
+/* PREMIUM SHADE LAYERS */
+
+.contact-form::before,
+.selected-products-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(
+        circle at top left,
+        rgba(59,130,246,.16),
+        transparent 34%
+    ),
+
+    radial-gradient(
+        circle at bottom right,
+        rgba(255,75,75,.16),
+        transparent 34%
+    ),
+
+    radial-gradient(
+        circle at center,
+        rgba(99,102,241,.05),
+        transparent 45%
+    );
+
+    pointer-events:none;
+}
+
+
+/* EXTRA LIGHT EFFECT */
+
+.contact-form::after,
+.selected-products-box::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-40%;
+    left:-20%;
+
+    width:140%;
+    height:140%;
+
+    background:
+    linear-gradient(
+        120deg,
+        transparent 30%,
+        rgba(255,255,255,.18),
+        transparent 70%
+    );
+
+    transform: rotate(8deg);
+
+    pointer-events:none;
+}
+
+
+/* HOVER */
+
+.contact-form:hover,
+.selected-products-box:hover{
+
+    transform: translateY(-6px);
+
+    box-shadow:
+    0 18px 40px rgba(15,23,42,.12),
+    0 30px 70px rgba(37,99,235,.12),
+    0 40px 80px rgba(255,75,75,.12);
+}

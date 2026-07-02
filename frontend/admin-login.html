@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Accurate Industries | Admin Login</title>
+
+<link rel="stylesheet" href="assets/css/global.css">
+<link rel="stylesheet" href="assets/css/login.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="admin-login-body">
+
+<!-- =========================================
+     BACK BUTTON
+========================================= -->
+
+<a href="index.html" class="back-btn">
+    ← Back
+</a>
+
+<!-- =========================================
+     LOGIN LAYOUT
+========================================= -->
+
+<div class="login-layout">
+
+    <!-- =========================================
+         LEFT SIDE
+    ========================================= -->
+
+    <div class="login-left">
+
+        <div class="dark-overlay"></div>
+
+        <div class="glow glow1"></div>
+        <div class="glow glow2"></div>
+
+        <div class="brand-section">
+
+            <div class="brand-badge">
+                ⚙ Industrial Manufacturing Portal
+            </div>
+
+            <h1>
+                Accurate<br>
+                Industries
+            </h1>
+
+            <p>
+                Precision Engineering • Industrial Components •
+                Manufacturing Excellence
+            </p>
+
+            <div class="feature-row">
+
+                <div class="feature-card">
+                    <span>✓</span>
+                    Production Monitoring
+                </div>
+
+                <div class="feature-card">
+                    <span>✓</span>
+                    Secure Admin Access
+                </div>
+
+                <div class="feature-card">
+                    <span>✓</span>
+                    Real-Time Dashboard
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =========================================
+         RIGHT SIDE
+    ========================================= -->
+
+    <div class="login-right">
+
+        <div class="login-card">
+
+            <div class="top-icon">
+                ⚡
+            </div>
+
+            <div class="login-header">
+
+                <h2>Admin Login</h2>
+
+                <p>
+                    Access the Accurate Industries management dashboard
+                </p>
+
+            </div>
+
+            <!-- USERNAME -->
+
+            <div class="input-group">
+
+                <label>Username</label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter username"
+                >
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                >
+
+            </div>
+
+            <!-- LOGIN BUTTON -->
+
+            <button onclick="login()">
+                Login to Dashboard
+            </button>
+
+            <div class="bottom-text">
+                Secure enterprise authentication system
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================
+     LOGIN SCRIPT
+========================================= -->
+
+<script>
+
+async function login() {
+
+    const username =
+        document.getElementById("username").value;
+
+    const password =
+        document.getElementById("password").value;
+
+    try {
+
+        const res = await fetch(
+
+            `http://127.0.0.1:8000/admin-login?username=${username}&password=${password}`,
+
+            {
+                method: "POST"
+            }
+
+        );
+
+        const data = await res.json();
+
+        if (data.access_token) {
+
+            localStorage.setItem(
+                "token",
+                data.access_token
+            );
+
+            window.location.href =
+                "admin-dashboard.html";
+
+        } else {
+
+            alert("Invalid credentials");
+
+        }
+
+    } catch {
+
+        alert("Server error");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
