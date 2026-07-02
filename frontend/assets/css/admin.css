@@ -1066,3 +1066,21 @@ body{
     box-shadow:
     0 0 10px rgba(245,158,11,0.35);
 }
+
+.qty-badge {
+
+    background: #eef4ff;
+
+    color: #2563eb;
+
+    padding: 4px 10px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-left: 8px;
+
+}

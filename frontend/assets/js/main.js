@@ -130,6 +130,43 @@ function removeSelectedProduct(id) {
     );
 }
 
+/* =========================================
+   CHANGE QUANTITY
+========================================= */
+
+function changeQuantity(id, change) {
+
+    let products =
+        JSON.parse(
+            localStorage.getItem(
+                "inquiryProducts"
+            )
+        ) || [];
+
+    const product =
+        products.find(
+            p => p.id === id
+        );
+
+    if (!product) return;
+
+    product.quantity += change;
+
+    if (product.quantity < 1) {
+
+        product.quantity = 1;
+    }
+
+    localStorage.setItem(
+
+        "inquiryProducts",
+
+        JSON.stringify(products)
+
+    );
+
+    renderSelectedProducts();
+}
 
 /* =========================================
    RENDER SELECTED PRODUCTS
@@ -184,23 +221,47 @@ function renderSelectedProducts() {
 
         div.innerHTML = `
 
-            <div class="selected-left">
+        <div class="selected-left">
 
-                <span class="selected-name">
+            <span class="selected-name">
 
-                    ${product.name}
+                ${product.name}
+
+            </span>
+
+            <div class="quantity-controls">
+
+                <button
+                    onclick="changeQuantity(${product.id}, -1)">
+
+                    −
+
+                </button>
+
+                <span>
+
+                    ${product.quantity}
 
                 </span>
 
+                <button
+                    onclick="changeQuantity(${product.id}, 1)">
+
+                    +
+
+                </button>
+
             </div>
 
-            <button
-                class="remove-selected-btn"
-                onclick="removeSelectedProduct(${product.id})">
+        </div>
 
-                Remove
+        <button
+            class="remove-selected-btn"
+            onclick="removeSelectedProduct(${product.id})">
 
-            </button>
+            Remove
+
+        </button>
 
         `;
 
@@ -218,7 +279,7 @@ function validateForm(
     email,
     phone,
     message,
-    productIds
+    products
 ) {
 
     if (!name || name.length < 2) {
@@ -261,7 +322,7 @@ function validateForm(
         return false;
     }
 
-    if (productIds.length === 0) {
+    if (products.length === 0) {
 
         showToast(
             "Select at least one product",
@@ -314,9 +375,6 @@ async function submitInquiry() {
                 )
             ) || [];
 
-        const productIds =
-            products.map(p => p.id);
-
         if (
 
             !validateForm(
@@ -324,7 +382,7 @@ async function submitInquiry() {
                 email,
                 phone,
                 message,
-                productIds
+                products
             )
 
         ) return;
@@ -344,14 +402,19 @@ async function submitInquiry() {
 
                     body: JSON.stringify({
 
-                        name,
-                        email,
-                        phone,
-                        message,
+                    name,
+                    email,
+                    phone,
+                    message,
 
-                        product_ids:
-                        productIds
-                    })
+                    products: products.map(p => ({
+
+                        product_id: p.id,
+                        quantity: p.quantity
+
+                    }))
+
+                })
                 }
             );
 

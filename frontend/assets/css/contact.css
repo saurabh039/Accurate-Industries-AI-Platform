@@ -858,3 +858,51 @@
     0 30px 70px rgba(37,99,235,.12),
     0 40px 80px rgba(255,75,75,.12);
 }
+
+/* =========================================
+   QUANTITY CONTROLS
+========================================= */
+
+.quantity-controls{
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:8px;
+}
+
+.quantity-controls button{
+
+    width:28px;
+    height:28px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    background:#111;
+
+    color:white;
+
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.quantity-controls button:hover{
+
+    background:#d62828;
+}
+
+.quantity-controls span{
+
+    min-width:24px;
+
+    text-align:center;
+
+    font-weight:600;
+}

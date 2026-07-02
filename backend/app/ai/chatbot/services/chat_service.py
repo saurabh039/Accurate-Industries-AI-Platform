@@ -3,11 +3,11 @@ import pickle
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from app.ai.chatbot.services.intent_service import classify_intent
-from app.ai.chatbot.leads.lead_service import (
-    start_lead,
-    process_lead,
-    lead_sessions
-)
+# from app.ai.chatbot.leads.lead_service import (
+#     start_lead,
+#     process_lead,
+#     lead_sessions
+# )
 # ==========================================
 # LOAD MODEL
 # ==========================================
@@ -78,166 +78,13 @@ def get_response(
     # LEAD SESSION ACTIVE
     # ==========================================
 
-    if session_id in lead_sessions:
+    # if session_id in lead_sessions:
 
-        return process_lead(
-            session_id,
-            message
-        )
+    #     return process_lead(
+    #         session_id,
+    #         message
+    #     )
 
-    # ==========================================
-    # CONVERSATION MEMORY
-    # ==========================================
-
-    if history:
-
-        previous_user_messages = [
-            item["content"].lower()
-            if isinstance(item, dict)
-            else item.content.lower()
-            for item in history
-            if (
-                item["role"] == "user"
-                if isinstance(item, dict)
-                else item.role == "user"
-            )
-        ]
-
-
-        # ==========================================
-        # FOLLOW-UP: FIXTURES
-        # ==========================================
-
-        if any(
-            word in msg
-            for word in [
-                "types",
-                "which ones",
-                "tell me more",
-                "more details"
-            ]
-        ):
-
-            if any(
-                "fixture" in m
-                for m in previous_user_messages
-            ):
-
-                return """
-We offer several fixture types:
-
-• Hydraulic Fixtures
-• Pneumatic Fixtures
-• Pneumatic Leak Test Fixtures
-• Inspection Fixtures
-• Jig Fixtures
-
-All fixtures are custom-designed according to customer requirements and quality standards.
-"""
-
-
-        # ==========================================
-        # FOLLOW-UP: CNC
-        # ==========================================
-
-        if any(
-            word in msg
-            for word in [
-                "more",
-                "specifications",
-                "capacity"
-            ]
-        ):
-
-            if any(
-                "cnc" in m
-                for m in previous_user_messages
-            ):
-
-                return """
-Our CNC capabilities include:
-
-• CNC Turning
-• Precision Shafts
-• Automotive Components
-• High-volume Production
-• Micron-level Accuracy
-
-We specialize in repeatable precision manufacturing for OEM clients.
-"""
-
-    # ==========================================
-    # GREETINGS
-    # ==========================================
-
-    import faiss
-import pickle
-import numpy as np
-from sentence_transformers import SentenceTransformer
-from app.ai.chatbot.services.intent_service import classify_intent
-
-# ==========================================
-# LOAD MODEL
-# ==========================================
-
-model = SentenceTransformer("all-MiniLM-L6-v2")
-
-
-# ==========================================
-# LOAD FAISS INDEX
-# ==========================================
-
-index = faiss.read_index(
-    "app/ai/chatbot/vector_store/company.index"
-)
-
-with open(
-    "app/ai/chatbot/vector_store/chunks.pkl",
-    "rb"
-) as f:
-    chunks = pickle.load(f)
-
-
-# ==========================================
-# RETRIEVE CONTEXT
-# ==========================================
-
-def retrieve_context(query, k=2):
-
-    query_embedding = model.encode([query])
-
-    query_embedding = np.array(
-        query_embedding,
-        dtype="float32"
-    )
-
-    distances, indices = index.search(
-        query_embedding,
-        k
-    )
-
-    context = []
-
-    for idx in indices[0]:
-
-        if idx < len(chunks):
-            context.append(chunks[idx])
-
-    return "\n\n".join(context)
-
-
-# ==========================================
-# MAIN CHAT FUNCTION
-# ==========================================
-
-def get_response(message, history=None, session_id=None):
-
-    print("CHAT service loaded with session support")
-    if history is None:
-        history = []
-
-    msg = message.lower().strip()
-    intent = classify_intent(message)
     # ==========================================
     # CONVERSATION MEMORY
     # ==========================================
@@ -486,18 +333,13 @@ Additional equipment:
 
     if intent == "QUOTATION":
 
-        start_lead(session_id)
-
         return """
-    Great! 👋
+Great! 👋
 
-    I can help generate a quotation.
+Please visit our Contact page and submit your requirements.
 
-    ### First question:
-
-    What product or service do you need?
-    """
-
+Our team will prepare a customized quotation for you.
+"""
 
     # ==========================================
     # CONTACT

@@ -25,12 +25,20 @@ def submit_inquiry(data: InquiryCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_inquiry)
 
-    # Save selected products
-    for product_id in data.product_ids:
+    # Save selected products with quantity
+
+    for product in data.products:
+
         item = InquiryItem(
+
             inquiry_id=new_inquiry.id,
-            product_id=product_id
+
+            product_id=product.product_id,
+
+            quantity=product.quantity
+
         )
+
         db.add(item)
 
     db.commit()
@@ -59,8 +67,13 @@ def get_inquiries(db: Session = Depends(get_db)):
 
             if product:
                 products.append({
+
                     "id": product.id,
-                    "name": product.name
+
+                    "name": product.name,
+
+                    "quantity": item.quantity
+
                 })
 
         result.append({

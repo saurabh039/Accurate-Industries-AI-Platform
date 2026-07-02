@@ -509,13 +509,11 @@ function addToInquiry(id, name) {
 
 function removeFromInquiry(id) {
 
-    let products =
-        getInquiryProducts();
+    let products = getInquiryProducts();
 
-    products =
-        products.filter(
-            p => p.id !== id
-        );
+    products = products.filter(
+        p => p.id !== id
+    );
 
     saveInquiryProducts(products);
 
@@ -525,6 +523,52 @@ function removeFromInquiry(id) {
         "Product removed from inquiry",
         "remove"
     );
+}
+
+
+function increaseQuantity(id) {
+
+    let products = getInquiryProducts();
+
+    const product = products.find(
+        p => p.id === id
+    );
+
+    if (product) {
+        product.quantity++;
+    }
+
+    saveInquiryProducts(products);
+
+    renderSelectedProducts();
+}
+
+
+function decreaseQuantity(id) {
+
+    let products = getInquiryProducts();
+
+    const product = products.find(
+        p => p.id === id
+    );
+
+    if (!product) return;
+
+    if (product.quantity > 1) {
+
+        product.quantity--;
+
+    } else {
+
+        products =
+            products.filter(
+                p => p.id !== id
+            );
+    }
+
+    saveInquiryProducts(products);
+
+    renderSelectedProducts();
 }
 
 /* =========================================
@@ -551,7 +595,9 @@ function updateCartCount() {
 function renderSelectedProducts() {
 
     const container =
-        document.getElementById("selected-products");
+        document.getElementById(
+            "selected-products"
+        );
 
     if (!container) return;
 
@@ -576,13 +622,36 @@ function renderSelectedProducts() {
         const div =
             document.createElement("div");
 
-        div.className = "selected-item";
+        div.className =
+            "selected-item";
 
         div.innerHTML = `
 
-            <span>
-                ${product.name}
-            </span>
+            <div>
+
+                <h4>${product.name}</h4>
+
+                <button
+                    onclick="decreaseQuantity(${product.id})">
+
+                    −
+
+                </button>
+
+                <span>
+
+                    ${product.quantity}
+
+                </span>
+
+                <button
+                    onclick="increaseQuantity(${product.id})">
+
+                    +
+
+                </button>
+
+            </div>
 
             <button
                 onclick="removeFromInquiry(${product.id})">

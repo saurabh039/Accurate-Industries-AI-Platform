@@ -236,9 +236,19 @@ async function loadInquiries() {
                     <ul class="product-list">
 
                         ${
+                            
                             inq.products.length
                             ? inq.products
-                                .map(p => `<li>• ${p.name}</li>`)
+                                .map(
+                                    p => `
+                                    <li>
+                                        • ${p.name}
+                                        <span class="qty-badge">
+                                            × ${p.quantity}
+                                        </span>
+                                    </li>
+                                    `
+                                )
                                 .join("")
                             : "<li>• No products selected</li>"
                         }
