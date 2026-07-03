@@ -17,7 +17,7 @@ from app.routes import inquiry_routes
 from app.routes import admin_routes
 
 from app.ai.chatbot.routes import chat_routes
-
+from app.routes import ai_routes
 app = FastAPI()
 
 origins = [
@@ -41,6 +41,7 @@ app.include_router(product_routes.router)
 app.include_router(inquiry_routes.router)
 app.include_router(admin_routes.router)
 app.include_router(chat_routes.router)
+app.include_router(ai_routes.router)
 
 @app.get("/")
 def home():

@@ -1,0 +1,67 @@
+.insight-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:24px;
+
+    margin-top:30px;
+}
+
+.insight-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:28px;
+
+    min-height:420px;
+
+    box-shadow:
+    0 10px 25px rgba(15,23,42,.05);
+}
+
+.insight-card h3{
+
+    margin-bottom:25px;
+}
+
+.ai-item{
+
+    padding:16px;
+
+    margin-bottom:14px;
+
+    border-radius:16px;
+
+    background:#f8fafc;
+
+    border-left:5px solid #2563eb;
+}
+
+.score-high{
+
+    border-color:#22c55e;
+}
+
+.score-medium{
+
+    border-color:#f59e0b;
+}
+
+.score-low{
+
+    border-color:#ef4444;
+}
+
+@media(max-width:1200px){
+
+    .insight-grid{
+
+        grid-template-columns:1fr;
+    }
+
+}
