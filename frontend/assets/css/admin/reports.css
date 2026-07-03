@@ -1,0 +1,136 @@
+.page-header h1 {
+
+    font-size: 52px;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+.report-actions {
+
+    margin-bottom: 30px;
+}
+
+.action-btn {
+
+    display: inline-block;
+
+    padding: 16px 30px;
+
+    border-radius: 18px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+}
+
+.charts-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+.chart-card {
+
+    background: white;
+
+    border-radius: 28px;
+
+    padding: 25px;
+
+    box-shadow:
+    0 10px 25px rgba(15,23,42,.05);
+}
+
+.chart-card img {
+
+    width: 100%;
+}
+
+.full-width {
+
+    grid-column: span 2;
+}
+
+.chatbot-card {
+
+    margin-top: 30px;
+
+    background: white;
+
+    border-radius: 28px;
+
+    padding: 30px;
+}
+
+#chat-box {
+
+    height: 300px;
+
+    overflow-y: auto;
+
+    margin: 20px 0;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 16px;
+
+    padding: 20px;
+}
+
+.chat-input {
+
+    display: flex;
+
+    gap: 15px;
+}
+
+.chat-input input {
+
+    flex: 1;
+
+    height: 55px;
+
+    border-radius: 16px;
+
+    border: 1px solid #cbd5e1;
+
+    padding: 0 20px;
+}
+
+.chat-input button {
+
+    width: 140px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    background:
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+}
