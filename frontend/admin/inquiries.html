@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Customer Inquiries | Accurate Industries</title>
+
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/admin/common.css">
+<link rel="stylesheet" href="../assets/css/admin/inquiries.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <a href="../index.html" class="back-btn">
+            ← Back
+        </a>
+
+        <div class="logo">
+
+            <h2>⚙ Accurate Admin</h2>
+
+            <p>AI Manufacturing Platform</p>
+
+        </div>
+
+        <ul class="menu">
+
+            <li>
+                <a href="overview.html">📊 Dashboard</a>
+            </li>
+
+            <li>
+                <a href="products.html">📦 Products</a>
+            </li>
+
+            <li class="active">
+                <a href="inquiries.html">
+                    📩 Inquiries
+                    <span id="inquiry-badge" class="badge">
+                        0
+                    </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="analytics.html">📈 Analytics</a>
+            </li>
+
+            <li>
+                <a href="ai-insights.html">🤖 AI Insights</a>
+            </li>
+
+            <li>
+                <a href="reports.html">📄 Reports</a>
+            </li>
+
+            <li>
+                <a href="settings.html">⚙ Settings</a>
+            </li>
+
+        </ul>
+
+        <div class="sidebar-footer">
+
+            <button
+                class="logout-btn"
+                onclick="logout()">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <div>
+
+                <h2>
+                    Customer Relationship Center
+                </h2>
+
+                <p>
+                    Manage, prioritize and analyze customer requests
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <section class="search-section">
+
+            <input
+                id="searchInquiry"
+                type="text"
+                placeholder="Search customer, email, product..."
+                onkeyup="filterInquiries()"
+            >
+
+        </section>
+
+
+        <!-- KANBAN -->
+
+        <section class="kanban-grid">
+
+            <div class="kanban-column">
+
+                <h3>
+                    🔴 Pending
+                </h3>
+
+                <div id="pending-list">
+
+                </div>
+
+            </div>
+
+
+            <div class="kanban-column">
+
+                <h3>
+                    🟢 Completed
+                </h3>
+
+                <div id="completed-list">
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="../assets/js/admin/common.js"></script>
+<script src="../assets/js/admin/inquiries.js"></script>
+
+</body>
+</html>
