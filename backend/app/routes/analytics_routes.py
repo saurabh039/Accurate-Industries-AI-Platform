@@ -39,6 +39,20 @@ from app.analytics.demand_forecasting import (
     predict_demand
 )
 
+from fastapi.responses import FileResponse
+
+from app.analytics.exports.pdf_report import (
+    generate_pdf_report
+)
+
+from app.analytics.exports.csv_export import (
+    export_csv
+)
+
+from app.analytics.recommendations.ml_recommendations import (
+    generate_ml_recommendations
+)
+
 router = APIRouter(
     prefix="/analytics",
     tags=["Analytics"]
@@ -185,6 +199,106 @@ def lead_scores(
     df = build_inquiry_dataframe(db)
 
     return train_lead_model(df)
+
+@router.get("/export/pdf")
+def export_pdf(
+    db: Session = Depends(get_db)
+):
+
+    inquiries = build_inquiries(db)
+
+    dashboard = calculate_dashboard_metrics(
+        inquiries
+    )
+
+    customers = analyze_customers(
+        inquiries
+    )
+
+    products = analyze_products(
+        inquiries
+    )
+
+    kpis = generate_kpis(
+        dashboard,
+        customers,
+        products
+    )
+
+    df = build_inquiry_dataframe(db)
+
+    forecast = predict_demand(df)
+
+    report = {
+
+        "dashboard": dashboard,
+
+        "customers": customers,
+
+        "products": products,
+
+        "kpis": kpis,
+
+        "forecast": forecast
+
+    }
+
+    path = "uploads/analytics_report.pdf"
+
+    generate_pdf_report(
+        report,
+        path
+    )
+
+    return FileResponse(
+
+        path,
+
+        media_type="application/pdf",
+
+        filename="analytics_report.pdf"
+
+    )
+
+
+@router.get("/export/csv")
+def export_products_csv(
+    db: Session = Depends(get_db)
+):
+
+    df = build_inquiry_dataframe(db)
+
+    path = "uploads/products.csv"
+
+    export_csv(
+        df,
+        path
+    )
+
+    return FileResponse(
+
+        path,
+
+        media_type="text/csv",
+
+        filename="products.csv"
+
+    )
+
+
+@router.get("/recommendations")
+def recommendations(
+    db: Session = Depends(get_db)
+):
+
+    df = build_inquiry_dataframe(db)
+
+    forecast = predict_demand(df)
+
+    return generate_ml_recommendations(
+        forecast
+    )
+
 
 @router.get("/forecast")
 def forecast_analytics(
