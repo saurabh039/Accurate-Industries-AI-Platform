@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="../assets/css/admin/common.css">
 <link rel="stylesheet" href="../assets/css/admin/analytics.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
 rel="stylesheet">
 
 </head>
@@ -37,21 +38,15 @@ rel="stylesheet">
         <ul class="menu">
 
             <li><a href="overview.html">📊 Dashboard</a></li>
-
             <li><a href="products.html">📦 Products</a></li>
-
             <li><a href="inquiries.html">📩 Inquiries</a></li>
 
             <li class="active">
-                <a href="analytics.html">
-                    📈 Analytics
-                </a>
+                <a href="analytics.html">📈 Analytics</a>
             </li>
 
             <li><a href="ai-insights.html">🤖 AI Insights</a></li>
-
             <li><a href="reports.html">📄 Reports</a></li>
-
             <li><a href="settings.html">⚙ Settings</a></li>
 
         </ul>
@@ -69,7 +64,6 @@ rel="stylesheet">
         </div>
 
     </aside>
-
 
     <!-- MAIN -->
 
@@ -91,87 +85,71 @@ rel="stylesheet">
 
         </div>
 
-
         <!-- KPI CARDS -->
 
         <section class="analytics-stats">
 
             <div class="analytics-card">
-
-                <h2 id="analytics-products">
-                    0
-                </h2>
-
-                <p>
-                    Total Products
-                </p>
-
+                <h2 id="analytics-inquiries">0</h2>
+                <p>Total Inquiries</p>
             </div>
 
             <div class="analytics-card">
-
-                <h2 id="analytics-inquiries">
-                    0
-                </h2>
-
-                <p>
-                    Customer Inquiries
-                </p>
-
+                <h2 id="completion-rate">0%</h2>
+                <p>Completion Rate</p>
             </div>
 
             <div class="analytics-card">
-
-                <h2 id="top-product">
-                    --
-                </h2>
-
-                <p>
-                    Most Requested Product
-                </p>
-
+                <h2 id="repeat-customers">0</h2>
+                <p>Repeat Customers</p>
             </div>
 
             <div class="analytics-card green">
-
-                <h2>
-                    24h
-                </h2>
-
-                <p>
-                    Avg Response Time
-                </p>
-
+                <h2 id="avg-products">0</h2>
+                <p>Avg Products / Inquiry</p>
             </div>
 
         </section>
 
 
-        <!-- CHARTS -->
+        <!-- HERO SECTION -->
 
-        <section class="chart-grid">
+        <section class="hero-grid">
 
-            <div class="chart-card">
+            <div class="chart-card demand-card">
 
-                <h3>
-                    🔥 Product Demand Analysis
-                </h3>
+                <h3>🏭 Top Product Demand (Current Month)</h3>
 
-                <div id="product-demand">
-
-                </div>
+                <canvas id="product-demand-chart"></canvas>
 
             </div>
 
-
             <div class="chart-card">
 
-                <h3>
-                    📈 Inquiry Statistics
-                </h3>
+                <h3>📊 Business KPIs</h3>
 
                 <div id="inquiry-stats">
 
+                    <div class="chart-item">
+
+                        <span>
+                            Loading...
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="chart-card">
+
+                <h3>🥧 Customer Distribution (Top 5)</h3>
+
+                <div class="pie-wrapper">
+
+                    <canvas id="customer-pie-chart"></canvas>
+
                 </div>
 
             </div>
@@ -179,36 +157,171 @@ rel="stylesheet">
         </section>
 
 
-        <!-- AI FORECAST -->
+        <!-- CUSTOMERS + INSIGHTS -->
 
-        <section class="forecast-card">
+        <section class="insights-grid">
 
-            <h2>
-                🤖 AI Forecast Engine
-            </h2>
+            <div class="chart-card">
 
-            <ul>
+                <h3>👥 Top Customers</h3>
 
-                <li>
-                    Demand prediction model coming in Milestone 4
-                </li>
+                <div id="top-customers"></div>
 
-                <li>
-                    Smart lead scoring system under development
-                </li>
+            </div>
 
-                <li>
-                    Automated inventory recommendations enabled soon
-                </li>
 
-            </ul>
+            <div class="forecast-card">
+
+                <h2>💡 Executive Insights</h2>
+
+                <ul id="business-insights">
+
+                    <li>
+                        Loading insights...
+                    </li>
+
+                </ul>
+
+            </div>
 
         </section>
 
+
+        <!-- FORECAST GRAPH -->
+
+        <section class="chart-card full-width-card">
+
+            <h3>📈 Next Month Production Outlook</h3>
+
+            <canvas id="forecast-chart"></canvas>
+
+        </section>
+
+
+        <!-- SEGMENTS + LEADS -->
+
+        <section class="chart-grid">
+
+            <section class="chart-card">
+
+                <h3>👥 Customer Segments (K-Means)</h3>
+
+                <div id="customer-segments"></div>
+
+            </section>
+
+
+            <section class="chart-card">
+
+                <h3>🔥 ML Lead Scoring</h3>
+
+                <div id="lead-scores"></div>
+
+            </section>
+
+        </section>
+
+
+        <!-- FORECAST TABLE + ML ENGINE -->
+
+        <section class="chart-grid">
+
+            <section class="chart-card">
+
+                <h3>🔮 Manufacturing Demand Forecast</h3>
+
+                <div id="forecast-results"></div>
+
+            </section>
+
+
+            <section class="forecast-card">
+
+                <h2>🤖 Machine Learning Engine</h2>
+
+                <ul>
+
+                    <li>
+                        Logistic Regression predicts hot and cold leads.
+                    </li>
+
+                    <li>
+                        K-Means clusters customers into Premium, Regular and Potential groups.
+                    </li>
+
+                    <li>
+                        Linear Regression forecasts future product demand.
+                    </li>
+
+                    <li>
+                        All insights are generated from live MySQL business data.
+                    </li>
+
+                </ul>
+
+            </section>
+
+        </section>
+
+        <!-- AI RECOMMENDATIONS + EXPORTS -->
+
+        <section class="chart-grid">
+
+            <section class="chart-card">
+
+                <h3>🤖 AI Production Recommendations</h3>
+
+                <div id="ai-recommendations">
+
+                    <div class="chart-item">
+
+                        <span>Loading recommendations...</span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="forecast-card export-card">
+
+                <h2>📄 Export & Reporting Center</h2>
+
+                <p>
+                    Download analytics reports generated from live manufacturing data.
+                </p>
+
+                <div class="export-buttons">
+
+                    <button
+                        class="export-btn"
+                        onclick="downloadPDF()">
+
+                        📑 Download PDF Report
+
+                    </button>
+
+
+                    <button
+                        class="export-btn secondary"
+                        onclick="downloadCSV()">
+
+                        📊 Export CSV Data
+
+                    </button>
+
+                </div>
+
+            </section>
+
+    </section>
+<!-- END EXPORT SECTION -->
     </main>
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../assets/js/admin/common.js"></script>
 <script src="../assets/js/admin/analytics.js"></script>
 
