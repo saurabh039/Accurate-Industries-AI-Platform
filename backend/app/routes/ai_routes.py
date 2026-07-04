@@ -96,6 +96,7 @@ def ai_insights(db: Session = Depends(get_db)):
             "name": inquiry.name,
             "email": inquiry.email,
             "message": inquiry.message,
+            "status": inquiry.status,
             "products": products
 
         })
